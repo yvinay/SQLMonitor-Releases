@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: Questions and ideas
-    url: https://github.com/yvinay/SQLMonitor-Releases/discussions
-    about: Ask a question or discuss an idea with other testers.
-  - name: Report a security problem privately
-    url: https://github.com/yvinay/SQLMonitor-Releases/blob/main/SECURITY.md
-    about: Please don't post security problems publicly.
