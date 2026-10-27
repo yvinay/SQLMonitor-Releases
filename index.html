@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SQL Monitor - database monitoring that tells you what to fix (free beta)</title>
+<meta name="description" content="Monitoring and performance advisor for SQL Server, Azure SQL, PostgreSQL and MySQL. Finds the query behind the problem and shows the fix. Free public beta; your data stays on your machine.">
+<style>
+:root { color-scheme: dark; --bg:#0F1B2A; --surface:#172A40; --surface-2:#1E3550; --line:#2A4462; --text:#E3EBF5; --muted:#8DA2BC;
+  --accent:#4C9AFF; --ok:#2FB47C; --warn:#E8A33A; --crit:#E5484D;
+  --font:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,sans-serif; }
+@media (prefers-color-scheme: light) { :root { color-scheme: light; --bg:#F3F6FA; --surface:#FFFFFF; --surface-2:#E9EEF4; --line:#D3DCE7;
+  --text:#13233A; --muted:#56677E; --accent:#1F6FD6; --ok:#1E8F5F; --warn:#B9770E; --crit:#C8323A; } }
+* { box-sizing: border-box; } html { scroll-behavior: smooth; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.55 var(--font); }
+a { color: var(--accent); }
+.wrap { width:min(1120px, 92vw); margin:0 auto; }
+header.top { display:flex; align-items:center; gap:24px; padding:18px 0; }
+.logo { display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px; color:var(--text); text-decoration:none; }
+.logo svg { width:30px; height:30px; fill:none; stroke:var(--muted); stroke-width:1.6; } .logo .p { stroke:var(--ok); stroke-width:2.2; }
+.beta { font-size:11px; font-weight:700; color:var(--warn); border:1px solid var(--warn); border-radius:4px; padding:0 6px; }
+nav.links { margin-left:auto; display:flex; gap:22px; font-size:14px; } nav.links a { color:var(--muted); text-decoration:none; } nav.links a:hover { color:var(--text); }
+.hero { display:grid; grid-template-columns: 1fr; gap:28px; padding:56px 0 24px; }
+.hero h1 { font-size:clamp(32px, 5vw, 54px); line-height:1.08; letter-spacing:-.02em; margin:0; max-width:15ch; }
+.hero p.lead { font-size:19px; color:var(--muted); max-width:58ch; margin:0; }
+.cta { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:8px; font-weight:600; text-decoration:none; border:1px solid var(--line); color:var(--text); background:var(--surface); }
+.btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+.btn:hover { filter:brightness(1.08); }
+.small { font-size:13px; color:var(--muted); }
+.shot { border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.35); background:var(--surface); }
+.shot img { display:block; width:100%; height:auto; }
+.trust { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin:40px 0 10px; }
+.trust div { border-top:3px solid var(--ok); background:var(--surface); border-radius:8px; padding:14px 16px; font-size:14px; color:var(--muted); }
+.trust b { display:block; color:var(--text); font-size:15px; margin-bottom:2px; }
+section.feature { display:grid; grid-template-columns: 1fr 1.35fr; gap:40px; align-items:center; padding:56px 0; border-top:1px solid var(--line); }
+section.feature:nth-of-type(even) { grid-template-columns: 1.35fr 1fr; } section.feature:nth-of-type(even) .text { order:2; }
+.feature h2 { font-size:28px; letter-spacing:-.01em; margin:0 0 12px; line-height:1.2; }
+.feature p { color:var(--muted); margin:0 0 10px; }
+.feature ul { margin:10px 0 0; padding-left:20px; color:var(--muted); } .feature li { margin-bottom:6px; }
+.platforms { padding:56px 0; border-top:1px solid var(--line); }
+.platforms h2, .faq h2, .join h2 { font-size:28px; margin:0 0 18px; }
+.plist { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:10px; }
+.plist div { background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px 14px; font-size:14px; }
+.plist b { display:block; }
+.faq { padding:56px 0; border-top:1px solid var(--line); }
+details { background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-bottom:10px; }
+summary { cursor:pointer; font-weight:600; } details p { color:var(--muted); margin:10px 0 0; }
+.join { padding:56px 0 80px; border-top:1px solid var(--line); text-align:left; }
+.join p { color:var(--muted); max-width:60ch; }
+footer { border-top:1px solid var(--line); padding:24px 0 40px; font-size:13px; color:var(--muted); display:flex; gap:20px; flex-wrap:wrap; }
+footer a { color:var(--muted); }
+@media (max-width: 860px) { section.feature, section.feature:nth-of-type(even) { grid-template-columns:1fr; } section.feature:nth-of-type(even) .text { order:0; }
+  .trust { grid-template-columns:1fr 1fr; } nav.links { display:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="7" rx="11" ry="4"/><path d="M5 7v18c0 2.2 4.9 4 11 4s11-1.8 11-4V7"/><path d="M5 16c0 2.2 4.9 4 11 4s11-1.8 11-4"/><path class="p" d="M8 25h4l2-4 3 6 2-4h5"/></svg>SQL Monitor <span class="beta">BETA</span></a>
+    <nav class="links"><a href="#features">Features</a><a href="#platforms">Platforms</a><a href="#faq">Privacy &amp; FAQ</a><a href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/discussions">Community</a></nav>
+  </header>
+
+  <div class="hero">
+    <h1>Monitoring that tells you what to fix.</h1>
+    <p class="lead">SQL Monitor finds the query behind every slowdown, explains why it's slow from the execution plan, and gives you the fix. For SQL Server, Azure SQL, PostgreSQL and MySQL. Free during the beta.</p>
+    <div class="cta"><a class="btn primary" href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/releases/latest">Download for Windows</a>
+      <a class="btn" href="#features">See what it does</a><span class="small">Windows 10/11 or Server 2016+. Opens with demo data, so you can try it in two minutes.</span></div>
+    <div class="shot"><img src="img/estate.png" alt="Estate overview: databases sorted by risk with server metrics and top issues" loading="eager"></div>
+  </div>
+
+  <div class="trust">
+    <div><b>Read-only</b>Never changes your data. Fix scripts are shown for you to review.</div>
+    <div><b>Your data stays local</b>No telemetry. Metrics and passwords stay on your machine.</div>
+    <div><b>Least privilege</b>Setup scripts create a minimal monitoring login.</div>
+    <div><b>Agentless</b>Nothing to install on your database servers.</div>
+  </div>
+
+  <section class="feature" id="features"><div class="text"><h2>The query behind the problem, and why</h2>
+    <p>When CPU, IO or log writes spike, the advisor names the few queries responsible and their share of the load, reads their execution plans, and explains the cause in plain language.</p>
+    <ul><li>Implicit conversions, large scans, key lookups, spills, memory grants</li><li>Plan regressions with a one-line "force the good plan" fix</li><li>Missing indexes linked to the queries that need them</li></ul></div>
+    <div class="shot"><img src="img/advisor.png" alt="Advisor finding: high CPU caused by a stored procedure, with plan issues and recommended fixes" loading="lazy"></div></section>
+
+  <section class="feature"><div class="text"><h2>Where the time went, at any moment</h2>
+    <p>Active sessions are sampled every two seconds and broken down by wait: CPU, IO, locks, log, memory, parallelism. Click any point to see exactly what was running and who was blocking whom.</p>
+    <ul><li>Deployments, schema and setting changes marked on every chart</li><li>Learned baselines: alerts when something is unusual for that hour</li></ul></div>
+    <div class="shot"><img src="img/response-time.png" alt="Response time chart by wait class with change markers, and a snapshot of running queries at a chosen moment" loading="lazy"></div></section>
+
+  <section class="feature"><div class="text"><h2>Deadlocks you can actually fix</h2>
+    <p>Deadlocks are grouped into recurring patterns, drawn as a lock graph, and explained step by step, with prevention advice for the specific pattern.</p></div>
+    <div class="shot"><img src="img/deadlocks.png" alt="Deadlock graph showing two sessions, the locks they hold and wait for, and an explanation" loading="lazy"></div></section>
+
+  <section class="feature"><div class="text"><h2>Health checks with the fix attached</h2>
+    <p>Backups against your RPO, Availability Groups and geo-replication, Agent jobs, CHECKDB, capacity forecasts, configuration, security and end-of-support dates. Every problem comes with a script.</p></div>
+    <div class="shot"><img src="img/health.png" alt="Health checks: backup, job, integrity and lifecycle problems with fix scripts" loading="lazy"></div></section>
+
+  <section class="feature"><div class="text"><h2>Stop paying for idle capacity</h2>
+    <p>Right-sizing for elastic pools, databases, Managed Instances, VMs and RDS, based on 95th-percentile and peak load, with the monthly saving at your own rates.</p></div>
+    <div class="shot"><img src="img/cost.png" alt="Cost recommendations with current and suggested sizes and monthly savings" loading="lazy"></div></section>
+
+  <div class="platforms" id="platforms"><h2>Supported platforms</h2><div class="plist">
+    <div><b>Azure SQL Database</b>including elastic pools</div><div><b>Azure SQL Managed Instance</b></div>
+    <div><b>SQL Server 2016 SP2+</b>VMs and on-premises</div><div><b>Amazon RDS for SQL Server</b></div>
+    <div><b>PostgreSQL 10+</b>self-hosted, Azure, RDS, Aurora</div><div><b>MySQL 5.7 / 8.x, MariaDB</b>self-hosted, Azure, RDS, Aurora</div></div></div>
+
+  <div class="faq" id="faq"><h2>Privacy and FAQ</h2>
+    <details open><summary>Does any of my data leave my network?</summary><p>No. There is no telemetry. The only optional connections are an update check that reads the public release list, and AI explanations if you turn them on with your own Anthropic key (literal values are masked). See the <a href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/blob/main/PRIVACY.md">privacy statement</a>.</p></details>
+    <details><summary>What permissions does it need?</summary><p>Read-only monitoring permissions: VIEW SERVER STATE / VIEW DATABASE STATE on SQL Server, pg_monitor on PostgreSQL, PROCESS and read access to performance_schema on MySQL. Scripts are included.</p></details>
+    <details><summary>How much load does it add?</summary><p>Light queries every 15 seconds, query statistics every minute, and heavier checks every 10 minutes or less often. Every query has a 30-second timeout, and each feature can be switched off.</p></details>
+    <details><summary>Is it free?</summary><p>Yes, during the beta. Beta testers will be offered a discount if a paid edition follows.</p></details>
+    <details><summary>Windows warns about the download. Is it safe?</summary><p>New downloads from small publishers trigger SmartScreen until they build a reputation. Compare the file's SHA-256 with the .sha256 file on the release page, then choose More info &gt; Run anyway.</p></details>
+  </div>
+
+  <div class="join"><h2>Help shape it</h2>
+    <p>This beta exists to learn what DBAs need. Tell us what's missing compared with the tool you use today, what's confusing, and what you'd pay for. The most-requested ideas get built first.</p>
+    <div class="cta"><a class="btn primary" href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/releases/latest">Download the beta</a>
+      <a class="btn" href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/issues/new/choose">Send feedback</a>
+      <a class="btn" href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/discussions">Join the discussion</a></div></div>
+
+  <footer><span>SQL Monitor beta</span><a href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/blob/main/BETA-TERMS.md">Beta terms</a><a href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/blob/main/PRIVACY.md">Privacy</a><a href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/blob/main/SECURITY.md">Security</a><span>Not affiliated with Microsoft, Amazon, Oracle or the PostgreSQL project.</span></footer>
+</div>
+</body>
+</html>
