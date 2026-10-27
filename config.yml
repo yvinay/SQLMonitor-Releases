@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Questions and ideas
-    url: https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/discussions
+    url: https://github.com/yvinay/SQLMonitor-Releases/sqlmonitor-releases/discussions
     about: Ask a question or discuss an idea with other testers.
   - name: Report a security problem privately
-    url: https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/blob/main/SECURITY.md
+    url: https://github.com/yvinay/SQLMonitor-Releases/sqlmonitor-releases/blob/main/SECURITY.md
     about: Please don't post security problems publicly.
