@@ -1,7 +1,7 @@
 # Security policy
 
 Please **don't** report security problems in public issues.
-Email YOUR-CONTACT-EMAIL with the details (version, steps to reproduce). You'll get a reply within
+Email yegineni@zohomail.in with the details (version, steps to reproduce). You'll get a reply within
 5 working days, and a fix or mitigation plan as soon as possible.
 
 Recommended deployment:
