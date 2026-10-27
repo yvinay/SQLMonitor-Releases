@@ -65,7 +65,7 @@ footer a { color:var(--muted); }
     <p class="lead">SQL Monitor finds the query behind every slowdown, explains why it's slow from the execution plan, and gives you the fix. For SQL Server, Azure SQL, PostgreSQL and MySQL. Free during the beta.</p>
     <div class="cta"><a class="btn primary" href="https://github.com/yvinay/SQLMonitor-Releases/releases/latest">Download for Windows</a>
       <a class="btn" href="#features">See what it does</a><span class="small">Windows 10/11 or Server 2016+. Opens with demo data, so you can try it in two minutes.</span></div>
-    <div class="shot"><img src="img/estate.png" alt="Estate overview: databases sorted by risk with server metrics and top issues" loading="eager"></div>
+    <div class="shot"><img src="estate.png" alt="Estate overview: databases sorted by risk with server metrics and top issues" loading="eager"></div>
   </div>
 
   <div class="trust">
@@ -78,24 +78,24 @@ footer a { color:var(--muted); }
   <section class="feature" id="features"><div class="text"><h2>The query behind the problem, and why</h2>
     <p>When CPU, IO or log writes spike, the advisor names the few queries responsible and their share of the load, reads their execution plans, and explains the cause in plain language.</p>
     <ul><li>Implicit conversions, large scans, key lookups, spills, memory grants</li><li>Plan regressions with a one-line "force the good plan" fix</li><li>Missing indexes linked to the queries that need them</li></ul></div>
-    <div class="shot"><img src="img/advisor.png" alt="Advisor finding: high CPU caused by a stored procedure, with plan issues and recommended fixes" loading="lazy"></div></section>
+    <div class="shot"><img src="advisor.png" alt="Advisor finding: high CPU caused by a stored procedure, with plan issues and recommended fixes" loading="lazy"></div></section>
 
   <section class="feature"><div class="text"><h2>Where the time went, at any moment</h2>
     <p>Active sessions are sampled every two seconds and broken down by wait: CPU, IO, locks, log, memory, parallelism. Click any point to see exactly what was running and who was blocking whom.</p>
     <ul><li>Deployments, schema and setting changes marked on every chart</li><li>Learned baselines: alerts when something is unusual for that hour</li></ul></div>
-    <div class="shot"><img src="img/response-time.png" alt="Response time chart by wait class with change markers, and a snapshot of running queries at a chosen moment" loading="lazy"></div></section>
+    <div class="shot"><img src="response-time.png" alt="Response time chart by wait class with change markers, and a snapshot of running queries at a chosen moment" loading="lazy"></div></section>
 
   <section class="feature"><div class="text"><h2>Deadlocks you can actually fix</h2>
     <p>Deadlocks are grouped into recurring patterns, drawn as a lock graph, and explained step by step, with prevention advice for the specific pattern.</p></div>
-    <div class="shot"><img src="img/deadlocks.png" alt="Deadlock graph showing two sessions, the locks they hold and wait for, and an explanation" loading="lazy"></div></section>
+    <div class="shot"><img src="deadlocks.png" alt="Deadlock graph showing two sessions, the locks they hold and wait for, and an explanation" loading="lazy"></div></section>
 
   <section class="feature"><div class="text"><h2>Health checks with the fix attached</h2>
     <p>Backups against your RPO, Availability Groups and geo-replication, Agent jobs, CHECKDB, capacity forecasts, configuration, security and end-of-support dates. Every problem comes with a script.</p></div>
-    <div class="shot"><img src="img/health.png" alt="Health checks: backup, job, integrity and lifecycle problems with fix scripts" loading="lazy"></div></section>
+    <div class="shot"><img src="health.png" alt="Health checks: backup, job, integrity and lifecycle problems with fix scripts" loading="lazy"></div></section>
 
   <section class="feature"><div class="text"><h2>Stop paying for idle capacity</h2>
     <p>Right-sizing for elastic pools, databases, Managed Instances, VMs and RDS, based on 95th-percentile and peak load, with the monthly saving at your own rates.</p></div>
-    <div class="shot"><img src="img/cost.png" alt="Cost recommendations with current and suggested sizes and monthly savings" loading="lazy"></div></section>
+    <div class="shot"><img src="cost.png" alt="Cost recommendations with current and suggested sizes and monthly savings" loading="lazy"></div></section>
 
   <div class="platforms" id="platforms"><h2>Supported platforms</h2><div class="plist">
     <div><b>Azure SQL Database</b>including elastic pools</div><div><b>Azure SQL Managed Instance</b></div>
@@ -112,11 +112,11 @@ footer a { color:var(--muted); }
 
   <div class="join"><h2>Help shape it</h2>
     <p>This beta exists to learn what DBAs need. Tell us what's missing compared with the tool you use today, what's confusing, and what you'd pay for. The most-requested ideas get built first.</p>
-    <div class="cta"><a class="btn primary" href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/releases/latest">Download the beta</a>
-      <a class="btn" href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/issues/new/choose">Send feedback</a>
-      <a class="btn" href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/discussions">Join the discussion</a></div></div>
+    <div class="cta"><a class="btn primary" href="https://github.com/yvinay/SQLMonitor-Releases/releases/latest">Download the beta</a>
+      <a class="btn" href="https://github.com/yvinay/SQLMonitor-Releases/issues/new/choose">Send feedback</a>
+      <a class="btn" href="https://github.com/yvinay/SQLMonitor-Releases/discussions">Join the discussion</a></div></div>
 
-  <footer><span>SQL Monitor beta</span><a href="https://github.com/YOUR-GITHUB-NAME/sqlmonitor-releases/blob/main/BETA-TERMS.md">Beta terms</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/PRIVACY.md">Privacy</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/SECURITY.md">Security</a><span>Not affiliated with Microsoft, Amazon, Oracle or the PostgreSQL project.</span></footer>
+  <footer><span>SQL Monitor beta</span><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/BETA-TERMS.md">Beta terms</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/PRIVACY.md">Privacy</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/SECURITY.md">Security</a><span>Not affiliated with Microsoft, Amazon, Oracle or the PostgreSQL project.</span></footer>
 </div>
 </body>
 </html>

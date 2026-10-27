@@ -3,11 +3,9 @@
 **Database performance monitoring with a built-in advisor, for SQL Server, Azure SQL, PostgreSQL and MySQL.**
 Free public beta. Your data never leaves your machine.
 
-> Replace "SQL Monitor" with your product name before announcing: the name is used by an existing commercial product.
+**[Download the latest beta](../../releases/latest)** &nbsp;|&nbsp; [Website](https://yvinay.github.io/SQLMonitor-Releases/) &nbsp;|&nbsp; [Send feedback](../../issues/new/choose) &nbsp;|&nbsp; [Discussions](../../discussions)
 
-**[Download the latest beta](../../releases/latest)** &nbsp;|&nbsp; [Website](https://github.com/yvinay/SQLMonitor-Releases/) &nbsp;|&nbsp; [Send feedback](../../issues/new/choose) &nbsp;|&nbsp; [Discussions](../../discussions)
-
-![Estate overview](docs/img/estate.png)
+![Estate overview](estate.png)
 
 ## What it does
 
