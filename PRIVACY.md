@@ -3,11 +3,16 @@
 **Short version: the software sends nothing about you or your databases to the developer.**
 
 ## What is stored, and where
-- Server addresses, settings, collected metrics, query text, deadlock reports and history are stored on the
-  computer where the software runs (`%APPDATA%\SQLMonitor` for the desktop app), or on your own server for
-  a central installation.
-- Passwords, API keys and webhook URLs are stored in Windows Credential Manager, or an encrypted file when no
-  credential store is available. They are never written to the settings file in plain text.
+- Server addresses, settings, collected metrics, query text, session details (user, machine, application),
+  blocking and deadlock reports and history are stored on the computer where the software runs
+  (`%APPDATA%\SQLMonitor` for the desktop app), or on your own server for a shared installation
+  (`%ProgramData%\SQLMonitor`, readable only by administrators and the service account).
+- Passwords, API keys and webhook URLs are stored in Windows Credential Manager, or an encrypted file whose
+  key is kept separately. They are never written to the settings file in plain text.
+- On a shared installation: user names, password hashes (never the passwords) and an audit log of sign-ins
+  and changes, on your server.
+- Inventory reports are generated on demand and downloaded to your computer. Passwords, password hashes,
+  job step commands and mail content are never read.
 
 ## Network connections the software makes
 | Connection | When | What is sent |

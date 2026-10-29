@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SQL Monitor - database monitoring that tells you what to fix (free beta)</title>
-<meta name="description" content="Monitoring and performance advisor for SQL Server, Azure SQL, PostgreSQL and MySQL. Finds the query behind the problem and shows the fix. Free public beta; your data stays on your machine.">
+<meta name="description" content="Monitoring and performance advisor for SQL Server, Azure SQL, PostgreSQL and MySQL. Finds the query behind the problem, who ran it, and the fix. Index, parameter sniffing and application reports, a complete inventory export, and a sign-in-protected console for your DBA team. Free public beta; your data stays with you.">
 <style>
 :root { color-scheme: dark; --bg:#0F1B2A; --surface:#172A40; --surface-2:#1E3550; --line:#2A4462; --text:#E3EBF5; --muted:#8DA2BC;
   --accent:#4C9AFF; --ok:#2FB47C; --warn:#E8A33A; --crit:#E5484D;
@@ -49,6 +49,12 @@ summary { cursor:pointer; font-weight:600; } details p { color:var(--muted); mar
 .join p { color:var(--muted); max-width:60ch; }
 footer { border-top:1px solid var(--line); padding:24px 0 40px; font-size:13px; color:var(--muted); display:flex; gap:20px; flex-wrap:wrap; }
 footer a { color:var(--muted); }
+.news { margin:44px 0 6px; padding:22px 24px; background:var(--surface); border:1px solid var(--line); border-radius:12px; }
+.news h2 { font-size:22px; margin:0 0 4px; } .news p.small { margin:0 0 14px; }
+.news ul { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:10px 22px; }
+.news li { font-size:14.5px; color:var(--muted); padding-left:14px; border-left:3px solid var(--accent); }
+.news li b { color:var(--text); } .news li a { color:var(--text); text-decoration:none; } .news li a:hover { text-decoration:underline; }
+.tag-new { display:inline-block; font-size:11px; font-weight:700; color:var(--ok); border:1px solid var(--ok); border-radius:4px; padding:0 6px; margin-left:8px; vertical-align:3px; letter-spacing:.02em; }
 @media (max-width: 860px) { section.feature, section.feature:nth-of-type(even) { grid-template-columns:1fr; } section.feature:nth-of-type(even) .text { order:0; }
   .trust { grid-template-columns:1fr 1fr; } nav.links { display:none; } }
 </style>
@@ -57,12 +63,12 @@ footer a { color:var(--muted); }
 <div class="wrap">
   <header class="top">
     <a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="7" rx="11" ry="4"/><path d="M5 7v18c0 2.2 4.9 4 11 4s11-1.8 11-4V7"/><path d="M5 16c0 2.2 4.9 4 11 4s11-1.8 11-4"/><path class="p" d="M8 25h4l2-4 3 6 2-4h5"/></svg>SQL Monitor <span class="beta">BETA</span></a>
-    <nav class="links"><a href="#features">Features</a><a href="#platforms">Platforms</a><a href="#faq">Privacy &amp; FAQ</a><a href="https://github.com/yvinay/SQLMonitor-Releases/discussions">Community</a></nav>
+    <nav class="links"><a href="#whats-new">What's new</a><a href="#features">Features</a><a href="#team">For teams</a><a href="#platforms">Platforms</a><a href="#faq">Privacy &amp; FAQ</a><a href="https://github.com/yvinay/SQLMonitor-Releases/discussions">Community</a></nav>
   </header>
 
   <div class="hero">
     <h1>Monitoring that tells you what to fix.</h1>
-    <p class="lead">SQL Monitor finds the query behind every slowdown, explains why it's slow from the execution plan, and gives you the fix. For SQL Server, Azure SQL, PostgreSQL and MySQL. Free during the beta.</p>
+    <p class="lead">SQL Monitor finds the query behind every slowdown, shows who ran it and from where, explains why it's slow from the execution plan, and gives you the fix. Reports, a complete inventory and a shared, sign-in-protected console for your whole DBA team. For SQL Server, Azure SQL, PostgreSQL and MySQL. Free during the beta.</p>
     <div class="cta"><a class="btn primary" href="https://github.com/yvinay/SQLMonitor-Releases/releases/latest">Download for Windows</a>
       <a class="btn" href="#features">See what it does</a><span class="small">Windows 10/11 or Server 2016+. Opens with demo data, so you can try it in two minutes.</span></div>
     <div class="shot"><img src="estate.png" alt="Estate overview: databases sorted by risk with server metrics and top issues" loading="eager"></div>
@@ -70,24 +76,66 @@ footer a { color:var(--muted); }
 
   <div class="trust">
     <div><b>Read-only</b>Never changes your data. Fix scripts are shown for you to review.</div>
-    <div><b>Your data stays local</b>No telemetry. Metrics and passwords stay on your machine.</div>
+    <div><b>Your data stays with you</b>No telemetry. Metrics and passwords stay on your machine or your own server.</div>
     <div><b>Least privilege</b>Setup scripts create a minimal monitoring login.</div>
     <div><b>Agentless</b>Nothing to install on your database servers.</div>
   </div>
 
+
+  <div class="news" id="whats-new"><h2>New in this beta</h2>
+    <p class="small">The biggest update since the first public beta. Full list in the <a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/CHANGELOG.md">changelog</a>.</p>
+    <ul>
+      <li><a href="#reports"><b>Seven on-demand reports</b></a>: unused, duplicate and missing indexes; index usage by query; parameter sniffing; client timeouts; chatty queries; connection churn; inventory.</li>
+      <li><a href="#inventory"><b>Complete inventory</b></a> of a server, a database or the whole estate, as a graphical report or an Excel workbook, with compatibility levels and Azure hardware.</li>
+      <li><a href="#queries"><b>Who ran it, from where</b></a>: user, machine, IP address, application and Running / Runnable / Suspended / Sleeping status on every page that lists queries.</li>
+      <li><a href="#blocking"><b>Blocking chains you can trust</b></a>: whole chains live and in history, even when the head blocker sits in another database, and every past incident's chain on one click.</li>
+      <li><a href="#team"><b>A shared console for your team</b></a>: everyone signs in at https://your-name, with roles, idle sign-out and an audit log. Setup script for Windows Server and IIS included.</li>
+      <li><b>Hardened security</b>: sign-in-free access only from the server itself, cross-site request protection, hashed API tokens, encrypted saved passwords, least-privilege permissions.</li>
+    </ul></div>
+
   <section class="feature" id="features"><div class="text"><h2>The query behind the problem, and why</h2>
     <p>When CPU, IO or log writes spike, the advisor names the few queries responsible and their share of the load, reads their execution plans, and explains the cause in plain language.</p>
-    <ul><li>Implicit conversions, large scans, key lookups, spills, memory grants</li><li>Plan regressions with a one-line "force the good plan" fix</li><li>Missing indexes linked to the queries that need them</li></ul></div>
-    <div class="shot"><img src="advisor.png" alt="Advisor finding: high CPU caused by a stored procedure, with plan issues and recommended fixes" loading="lazy"></div></section>
+    <ul><li>Implicit conversions, large scans, key lookups, spills, memory grants</li><li>Plan regressions with a one-line "force the good plan" fix</li><li>Missing indexes linked to the queries that need them</li><li>Who runs the query: user, machine and application</li></ul></div>
+    <div class="shot"><img src="advisor.png" alt="Advisor finding: a query became 142 times slower after a plan change, who runs it, and the script that forces the previous plan" loading="lazy"></div></section>
+
+  <section class="feature" id="queries"><div class="text"><h2>Who ran it, from where <span class="tag-new">NEW</span></h2>
+    <p>Every running session shows the user, the machine and its IP address, the application, and a status you can act on: Running, Runnable (waiting for CPU), Suspended (with the wait) or Sleeping.</p>
+    <ul><li>Sleeping sessions that hold an open transaction are listed, because they hold locks</li><li>Filter by status, or type a user, machine, application or text</li><li>Top queries remember who ran them, after they finish</li></ul></div>
+    <div class="shot"><img src="queries.png" alt="Running sessions with user, machine, IP address, application and status, filterable by Running, Runnable, Suspended and Sleeping" loading="lazy"></div></section>
 
   <section class="feature"><div class="text"><h2>Where the time went, at any moment</h2>
     <p>Active sessions are sampled every two seconds and broken down by wait: CPU, IO, locks, log, memory, parallelism. Click any point to see exactly what was running and who was blocking whom.</p>
     <ul><li>Deployments, schema and setting changes marked on every chart</li><li>Learned baselines: alerts when something is unusual for that hour</li></ul></div>
     <div class="shot"><img src="response-time.png" alt="Response time chart by wait class with change markers, and a snapshot of running queries at a chosen moment" loading="lazy"></div></section>
 
+  <section class="feature" id="blocking"><div class="text"><h2>Blocking chains, live and in history <span class="tag-new">NEW</span></h2>
+    <p>See the whole chain: the head blocker, what it's doing, how long its transaction has been open, and everyone waiting behind it, with each session's user, machine and application.</p>
+    <ul><li>Chains stay whole when the head blocker is connected to another database</li><li>Every past incident keeps its chain at its worst moment, one click away</li><li>History as far back as you keep it, with paging and a filter</li></ul></div>
+    <div class="shot"><img src="blocking.png" alt="Live blocking chain: a sleeping head blocker with an open transaction and the sessions waiting on it" loading="lazy"></div></section>
+
   <section class="feature"><div class="text"><h2>Deadlocks you can actually fix</h2>
     <p>Deadlocks are grouped into recurring patterns, drawn as a lock graph, and explained step by step, with prevention advice for the specific pattern.</p></div>
     <div class="shot"><img src="deadlocks.png" alt="Deadlock graph showing two sessions, the locks they hold and wait for, and an explanation" loading="lazy"></div></section>
+
+  <section class="feature" id="reports"><div class="text"><h2>Index reports with the evidence <span class="tag-new">NEW</span></h2>
+    <p>Unused indexes with how long usage was counted, duplicates and overlapping indexes with a removal script that includes the rollback, missing indexes, and indexes that cost many writes for every read.</p>
+    <ul><li>Index usage by query: which statements seek, scan, look up or update each index</li><li>SQL Server, PostgreSQL and MySQL</li></ul></div>
+    <div class="shot"><img src="reports-indexes.png" alt="Index report: unused, duplicate and missing indexes with removal and rollback scripts" loading="lazy"></div></section>
+
+  <section class="feature"><div class="text"><h2>Parameter sniffing, proven <span class="tag-new">NEW</span></h2>
+    <p>For each cached plan with parameters, SQL Monitor compares the value it was compiled for with the column's statistics histogram: rows expected for that value, for a typical value and for the heaviest one, plus the real spread of rows and duration per call.</p>
+    <ul><li>Ranked fixes: OPTION (RECOMPILE), OPTIMIZE FOR UNKNOWN, Query Store hints, plan sensitive optimization</li></ul></div>
+    <div class="shot"><img src="reports-sniffing.png" alt="Parameter sniffing report: compiled value against the histogram, runtime spread and suggested fixes" loading="lazy"></div></section>
+
+  <section class="feature"><div class="text"><h2>What the application is doing to the database <span class="tag-new">NEW</span></h2>
+    <p>Three reports for problems that start in the application: statements the client gave up on (timeouts) and why, chatty queries that run thousands of times a minute, and connection churn from applications that don't pool connections.</p>
+    <ul><li>Each timeout is labelled: slow statement, blocked, timeout setting, or cancelled</li><li>Reports run only when you ask, on a short connection that gives way to application locks</li></ul></div>
+    <div class="shot"><img src="reports-chatty.png" alt="Chatty queries: executions per minute against CPU per call, highlighting cheap statements that run constantly" loading="lazy"></div></section>
+
+  <section class="feature" id="inventory"><div class="text"><h2>A complete inventory in one click <span class="tag-new">NEW</span></h2>
+    <p>Hardware, edition, version and patch level, configuration with non-defaults flagged, databases, files and volumes, logins and roles, Agent jobs, availability groups and linked servers, plus what needs attention.</p>
+    <ul><li>Every database's compatibility level and the release it behaves like, so old ones stand out</li><li>Azure SQL Database: service objective, vCore or DTU, hardware generation, elastic pools, geo-replicas</li><li>A graphical report that prints to PDF, or an Excel workbook for your asset register; per database, server or estate</li></ul></div>
+    <div class="shot"><img src="inventory-report.png" alt="Inventory report for an Azure SQL Database server: items needing attention, storage, hardware and compatibility levels" loading="lazy"></div></section>
 
   <section class="feature"><div class="text"><h2>Health checks with the fix attached</h2>
     <p>Backups against your RPO, Availability Groups and geo-replication, Agent jobs, CHECKDB, capacity forecasts, configuration, security and end-of-support dates. Every problem comes with a script.</p></div>
@@ -97,15 +145,22 @@ footer a { color:var(--muted); }
     <p>Right-sizing for elastic pools, databases, Managed Instances, VMs and RDS, based on 95th-percentile and peak load, with the monthly saving at your own rates.</p></div>
     <div class="shot"><img src="cost.png" alt="Cost recommendations with current and suggested sizes and monthly savings" loading="lazy"></div></section>
 
+  <section class="feature" id="team"><div class="text"><h2>One console for the whole DBA team <span class="tag-new">NEW</span></h2>
+    <p>Run SQL Monitor on a server and your team opens it at a proper address such as https://sqlmonitor.yourcompany.com. Everyone signs in with their own account; nobody types an IP address or port.</p>
+    <ul><li>HTTPS with your certificate through IIS; one PowerShell script sets up the site, the background service and the firewall</li><li>Viewer, operator and admin roles; temporary passwords changed at first sign-in</li><li>Signed out when the browser closes or after 30 idle minutes; every sign-in in the audit log</li><li>Single sign-on through your reverse proxy if you prefer</li></ul></div>
+    <div class="shot"><img src="sign-in.png" alt="SQL Monitor sign-in page" loading="lazy"></div></section>
+
   <div class="platforms" id="platforms"><h2>Supported platforms</h2><div class="plist">
     <div><b>Azure SQL Database</b>including elastic pools</div><div><b>Azure SQL Managed Instance</b></div>
-    <div><b>SQL Server 2016 SP2+</b>VMs and on-premises</div><div><b>Amazon RDS for SQL Server</b></div>
-    <div><b>PostgreSQL 10+</b>self-hosted, Azure, RDS, Aurora</div><div><b>MySQL 5.7 / 8.x, MariaDB</b>self-hosted, Azure, RDS, Aurora</div></div></div>
+    <div><b>SQL Server 2016 SP2+</b>VMs and on-premises</div><div><b>Amazon RDS for SQL Server</b>and Google Cloud SQL</div>
+    <div><b>PostgreSQL 10+</b>self-hosted, Azure, RDS, Aurora, Cloud SQL</div><div><b>MySQL 5.7 / 8.x, MariaDB</b>self-hosted, Azure, RDS, Aurora, Cloud SQL</div></div></div>
 
   <div class="faq" id="faq"><h2>Privacy and FAQ</h2>
     <details open><summary>Does any of my data leave my network?</summary><p>No. There is no telemetry. The only optional connections are an update check that reads the public release list, and AI explanations if you turn them on with your own Anthropic key (literal values are masked). See the <a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/PRIVACY.md">privacy statement</a>.</p></details>
-    <details><summary>What permissions does it need?</summary><p>Read-only monitoring permissions: VIEW SERVER STATE / VIEW DATABASE STATE on SQL Server, pg_monitor on PostgreSQL, PROCESS and read access to performance_schema on MySQL. Scripts are included.</p></details>
-    <details><summary>How much load does it add?</summary><p>Light queries every 15 seconds, query statistics every minute, and heavier checks every 10 minutes or less often. Every query has a 30-second timeout, and each feature can be switched off.</p></details>
+    <details><summary>What permissions does it need?</summary><p>Read-only monitoring permissions: VIEW SERVER STATE / VIEW DATABASE STATE on SQL Server (plus SELECT on a few named msdb tables for backups, jobs and inventory), pg_monitor on PostgreSQL, PROCESS and read access to performance_schema on MySQL. Scripts are included. Two reports have optional extras: a small Extended Events session for client timeouts, and SELECT on the tables whose statistics histograms the parameter sniffing report should read.</p></details>
+    <details><summary>How much load does it add?</summary><p>Light queries every 15 seconds, query statistics every minute, and heavier checks every 10 minutes or less often. Every query has a 30-second timeout, and each feature can be switched off. Reports run only when someone opens them, on their own short connection with a 5-second lock timeout and low deadlock priority, so they always give way to your application.</p></details>
+    <details><summary>Can my whole team use one installation?</summary><p>Yes. Install it on a Windows server and run the included setup script: it puts IIS with HTTPS and your certificate in front, starts SQL Monitor in the background at startup, and turns on sign-in. Each DBA gets their own account and role. Until sign-in is on, SQL Monitor only answers requests from the server itself, so it is never an open console on your network. A Linux / Docker setup is available on request during the beta.</p></details>
+    <details><summary>Can I export an inventory for audits or our CMDB?</summary><p>Yes. The Inventory report downloads as a self-contained HTML report (prints to PDF) or an Excel workbook with one sheet per section, for one database, one server or every server at once. Passwords, password hashes, job step commands and mail content are never read.</p></details>
     <details><summary>Is it free?</summary><p>Yes, during the beta. Beta testers will be offered a discount if a paid edition follows.</p></details>
     <details><summary>Windows warns about the download. Is it safe?</summary><p>New downloads from small publishers trigger SmartScreen until they build a reputation. Compare the file's SHA-256 with the .sha256 file on the release page, then choose More info &gt; Run anyway.</p></details>
   </div>
@@ -116,7 +171,7 @@ footer a { color:var(--muted); }
       <a class="btn" href="https://github.com/yvinay/SQLMonitor-Releases/issues/new/choose">Send feedback</a>
       <a class="btn" href="https://github.com/yvinay/SQLMonitor-Releases/discussions">Join the discussion</a></div></div>
 
-  <footer><span>SQL Monitor beta</span><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/BETA-TERMS.md">Beta terms</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/PRIVACY.md">Privacy</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/SECURITY.md">Security</a><span>Not affiliated with Microsoft, Amazon, Oracle or the PostgreSQL project.</span></footer>
+  <footer><span>SQL Monitor beta</span><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/CHANGELOG.md">Changelog</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/BETA-TERMS.md">Beta terms</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/PRIVACY.md">Privacy</a><a href="https://github.com/yvinay/SQLMonitor-Releases/blob/main/SECURITY.md">Security</a><span>Not affiliated with Microsoft, Amazon, Oracle or the PostgreSQL project.</span></footer>
 </div>
 </body>
 </html>
